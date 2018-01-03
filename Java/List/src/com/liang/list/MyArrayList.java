@@ -119,7 +119,7 @@ public class MyArrayList<T> implements Iterable<T> {
 		}
 		T removeItem = theItems[index];
 		for (int i = index; i < theSize - 1; i++)
-			theItems[index] = theItems[index + 1];
+			theItems[i] = theItems[i + 1];
 		theSize--;
 		return removeItem;
 	}
@@ -142,10 +142,12 @@ public class MyArrayList<T> implements Iterable<T> {
 		public T next() {
 			if (!hasNext())
 				throw new NoSuchElementException();
+			System.out.println("next:"+(current+1)+",value:"+theItems[current+1]+",current:"+current);
 			return theItems[current++];
 		}
 
 		public void remove() {
+			System.out.println("remove:"+(current-1)+",value:"+theItems[current-1]+",current:"+current);
 			MyArrayList.this.remove(--current);
 		}
 	}
